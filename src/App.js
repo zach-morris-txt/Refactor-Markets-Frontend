@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+
 import { HomePage } from './HomePage';
 import { LoginPage } from './LoginPage';
 import { RegisterPage } from './RegisterPage';
@@ -46,7 +47,7 @@ export default function App()
         <Container>
             <GlobalStyle />
             <Nav>
-                <NavHeader>African Marketplace</NavHeader>
+                <NavHeader>Marketplace</NavHeader>
                 <NavItems>
                     {/* Link to Home Page available always */}
                     <NavItem to="/">Home</NavItem>
