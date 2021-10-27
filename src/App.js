@@ -1,94 +1,152 @@
+//Imports
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { HomePage } from './HomePage';
-import { LoginPage } from './LoginPage';
-import { RegisterPage } from './RegisterPage';
-import { OwnerPage } from './OwnerPage';
+import { HomePage } from './Components/HomePage';
+import { LoginPage } from './Components/LoginPage';
+import { RegisterPage } from './Components/RegisterPage';
+import { OwnerPage } from './Components/OwnerPage';
 import { GlobalStyle } from "./Styled/Global";
 import { Container } from "./Styled/Container";
 import { Nav, NavHeader, NavItem, NavItems, NavItemButton } from "./Styled/Navbar";
-import UnderConstruction from "./UnderConstruction";
+import UnderConstruction from "./Components/UnderConstruction";
 
-export default function App()
-{
-    // Save "username" in React State Hook.
-    // Set initial value to empty string.
-    const [username, setUsername] = useState('');
 
-    // Save "redirectTo" in React State Hook.
-    //Set initial value to "/" (Home Page).
-    const [redirectTo, setRedirectTo] = useState("/");
+//
+function App(props) {
+	const { isLoggedIn, dispatch } = props;
 
-    // This useEffect runs on start and when "username" changed
-    useEffect(() =>
-    {
-        if (username === '')
-        {
-            // If "username" is empty it will redirect to "Home" page
-            setRedirectTo('/');
-        }
-        else
-        {
-            // If "username" is set it will redirect to "OwnerPage" page
-            setRedirectTo('/owner');
-        }
-
-    }, [username]);
-
-    // This function is used to set "username" for logged in user,
-    // or set to empty for logged out user
-    function setLoggedUser(username)
-    {
-        setUsername(username);
-    }
+	const handleLogout = () => {
+		dispatch(logOut());
+    };
 
     return (
-        <Container>
-            <GlobalStyle />
-            <Nav>
-                <NavHeader>Marketplace</NavHeader>
-                <NavItems>
-                    {/* Link to Home Page available always */}
-                    <NavItem to="/">Home</NavItem>
+		<div className="App">
+			<div className="wrapper">
+				<div className="container">
+					<div className="nav">
+						<div className="logo">WMP</div>
+						<div className="menu">
+							<ul className="navMenu">
+								<Link to="/">
+									<li>
+										<a href="#0">Home</a>
+									</li>
+								</Link>
 
-                    {/* Link to User Profile Page available for logged in user */}
-                    {username && <NavItem to="/owner">Business Owner</NavItem>}
+								{isLoggedIn ? (
+									<>
+										<Link to="/dashboard" id="dashboard">
+											<li>
+												<a href="#0">Dashboard</a>
+											</li>
+										</Link>
+										<Link to="/account" id="account">
+											<li>
+												<a href="#0">Account</a>
+											</li>
+										</Link>
+										<Link to="/" id="logout" onClick={handleLogout}>
+											<li>
+												<a href="#0">Logout</a>
+											</li>
+										</Link>
+									</>
+								) : (
+									<>
+										<Link to="/login" id="login">
+											<li>
+												<a href="#0">Login</a>
+											</li>
+										</Link>
+										<Link to="/signup" id="signup">
+											<li>
+												<a href="#0">Sign Up</a>
+											</li>
+										</Link>
+									</>
+								)}
+							</ul>
+						</div>
+					</div>
+					<Switch>
+						<Route path="/signup">
+							<Signup />
+						</Route>
+						<Route path="/login">
+							<Login />
+						</Route>
+						<PrivateRoute path="/dashboard" component={Dashboard} />
+						<PrivateRoute path="/account" component={Account} />
 
-                    {/* When user is logged in user "Logout" link display; otherwise "Login" link display */}
-                    {
-                        username
-                            ? <NavItemButton to="/" onClick={() => setLoggedUser('')}>Logout</NavItemButton>
-                            : <NavItemButton to="/login">Login</NavItemButton>
-                    }
-                </NavItems>
-            </Nav>
+						<Route
+							path="/"
+							render={props => {
+								return (
+									<div className="header">
+										<h1>Water My Plants</h1>
+										<p>We remember to water your plants, so you don't have to.</p>
+										<Link to="/signup">
+											<button className="button">Get Started</button>
+										</Link>
+									</div>
+								);
+							}}
+						/>
+					</Switch>
+				</div>
+			</div>
+		</div>
+	);
 
-            <div>
-                {redirectTo && <Redirect to={redirectTo} />}
 
-                <Switch>
-                    <Route exact path="/">
-                        <HomePage />
-                    </Route>
+    // return (
+    //     <Container>
+    //         <GlobalStyle />
+    //         <Nav>
+    //             <NavHeader>Marketplace</NavHeader>
+    //             <NavItems>
+    //                 {/* Link to Home Page available always */}
+    //                 <NavItem to="/">Home</NavItem>
 
-                    <Route path="/owner">
-                        <OwnerPage username={username} />
-                    </Route>
+    //                 {/* Link to User Profile Page available for logged in user */}
+    //                 {username && <NavItem to="/owner">Business Owner</NavItem>}
 
-                    <Route path="/login" >
-                        <LoginPage setLoggedUser={setLoggedUser} />
-                    </Route>
+    //                 {/* When user is logged in user "Logout" link display; otherwise "Login" link display */}
+    //                 {
+    //                     username
+    //                         ? <NavItemButton to="/" onClick={() => setLoggedUser('')}>Logout</NavItemButton>
+    //                         : <NavItemButton to="/login">Login</NavItemButton>
+    //                 }
+    //             </NavItems>
+    //         </Nav>
 
-                    <Route path="/register" >
-                        <RegisterPage setLoggedUser={setLoggedUser} />
-                    </Route>
+    //         <div>
+    //             {redirectTo && <Redirect to={redirectTo} />}
 
-                    <Route path="/logout">
-                        <Redirect to="/" />
-                    </Route>
-                </Switch>
-            </div>
-        </Container>
-    );
+    //             <Switch>
+    //                 <Route exact path="/">
+    //                     <HomePage />
+    //                 </Route>
+
+    //                 <Route path="/owner">
+    //                     <OwnerPage username={username} />
+    //                 </Route>
+
+    //                 <Route path="/login" >
+    //                     <LoginPage setLoggedUser={setLoggedUser} />
+    //                 </Route>
+
+    //                 <Route path="/register" >
+    //                     <RegisterPage setLoggedUser={setLoggedUser} />
+    //                 </Route>
+
+    //                 <Route path="/logout">
+    //                     <Redirect to="/" />
+    //                 </Route>
+    //             </Switch>
+    //         </div>
+    //     </Container>
+    // );
 }

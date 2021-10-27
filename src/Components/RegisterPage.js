@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import * as yup from 'yup';
-import schema from './validation/registerSchema';
-import { LoginContainer } from "./Styled/Container";
-import { InputGroup, InputControl } from './Styled/Input';
-import { Spinner } from './Styled/Spinner';
-import { PrimaryButton, LinkButton } from './Styled/Button';
-import { ErrorSpan } from './Styled/Span';
+import schema from '../Validation/registerSchema';
+import { LoginContainer } from "../Styled/Container";
+import { InputGroup, InputControl } from '../Styled/Input';
+import { Spinner } from '../Styled/Spinner';
+import { PrimaryButton, LinkButton } from '../Styled/Button';
+import { ErrorSpan } from '../Styled/Span';
 import background from "./Assets/login-background.png";
 
 export function RegisterPage(props)
