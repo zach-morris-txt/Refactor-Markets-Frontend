@@ -1,16 +1,20 @@
 //Imports
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { HomePage } from './Components/HomePage';
-import { LoginPage } from './Components/LoginPage';
-import { RegisterPage } from './Components/RegisterPage';
-import { OwnerPage } from './Components/OwnerPage';
-import { GlobalStyle } from "./Styled/Global";
-import { Container } from "./Styled/Container";
-import { Nav, NavHeader, NavItem, NavItems, NavItemButton } from "./Styled/Navbar";
-import UnderConstruction from "./Components/UnderConstruction";
+import Dashboard from './Components/HomePage';
+import Login  from './Components/LoginPage';
+import Signup from './Components/RegisterPage';
+import Account from './Components/OwnerPage';
+
+// import { GlobalStyle } from './Styled/Global';
+// import { Container } from './Styled/Container';
+// import { Nav, NavHeader, NavItem, NavItems, NavItemButton } from './Styled/Navbar';
+// import UnderConstruction from './Components/UnderConstruction';
+
+import { logOut } from './Actions/index';
+import PrivateRoute from './Components/PrivateRoute';
 
 
 //
@@ -150,3 +154,17 @@ function App(props) {
     //     </Container>
     // );
 }
+
+
+//
+const mapStateToProps = state => {
+	return {
+		...state,
+		isLoggedIn: state.isLoggedIn,
+		userId: state.userId
+	};
+};
+
+
+//Export
+export default connect(mapStateToProps)(App);

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import underConstruction from './Assets/under-construction.jpg';
+import underConstruction from '../Assets/under-construction.jpg';
 
 export default function UnderConstruction()
 {

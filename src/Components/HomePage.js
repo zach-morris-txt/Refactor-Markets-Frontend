@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import marketplace from "./Assets/marketplace.jpg";
+import marketplace from "../Assets/marketplace.jpg";
 
-export function HomePage()
-{
+function Dashboard() {
     const Wrapper = styled.div`
         display: flex;
         flex-flow: column nowrap;
@@ -23,3 +22,4 @@ export function HomePage()
         </Wrapper>
     );
 }
+export default (Dashboard);

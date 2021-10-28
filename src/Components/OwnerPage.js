@@ -1,7 +1,11 @@
-import React from 'react';
+//
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
-export function OwnerPage(props)
-{
+import { axiosWithAuth } from '../Utils/axiosWithAuth';
+
+
+function Account(props) {
     const { username } = props;
 
     return (
@@ -11,3 +15,4 @@ export function OwnerPage(props)
         </div>
     );
 }
+export default (Account);
