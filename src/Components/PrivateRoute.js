@@ -1,6 +1,9 @@
+//Imports
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
+
+//Route
 const PrivateRoute = ({ component: Component, ...rest }) => {
 	return (
 		<Route
@@ -12,4 +15,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 	);
 };
 
+
+//Exports
 export default PrivateRoute;

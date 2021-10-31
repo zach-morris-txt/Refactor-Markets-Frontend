@@ -1,13 +1,20 @@
+//Imports
 import {
+	FETCH_START,
+	FETCH_SUCCESS,
+	FETCH_FAIL,
+	ADD_ITEM,
 	LOG_IN,
 	LOG_OUT,
+	DELETE_ITEM,
 	START_EDITING,
+	UPDATE_ITEM,
 	CANCEL_UPDATE,
 	SET_USER_INFO
-} from '../Actions';
+} from '../actions';
 
 const initialState = {
-	plantData: [{}],
+	itemData: [{}],
 	isFetching: false,
 	error: '',
 	isLoggedIn: localStorage.getItem('isLoggedIn') === 'true' ? true : false,
@@ -15,13 +22,37 @@ const initialState = {
 	userId: '',
 	userInfo: {
 		username: '',
-		phone_number: '',
-		password: ''
+		password: '',
+		email: '',
+
 	}
 };
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
+		case FETCH_START:
+			return {
+				...state,
+				isFetching: true
+			};
+		case FETCH_SUCCESS:
+			return {
+				...state,
+				itemData: action.payload,
+				isFetching: false,
+				error: ''
+			};
+		case FETCH_FAIL:
+			return {
+				...state,
+				isFetching: false,
+				error: action.payload
+			};
+		case ADD_ITEM:
+			return {
+				...state,
+				itemData: [...state.itemData, action.payload]
+			};
 		case START_EDITING:
 			return {
 				...state,
@@ -31,6 +62,19 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				isEditing: false
+			};
+		case UPDATE_ITEM:
+			return {
+				...state,
+				itemData: state.itemData.map(item =>
+					item.item_id === action.payload.item_id ? action.payload : item
+				),
+				isEditing: false
+			};
+		case DELETE_ITEM:
+			return {
+				...state,
+				itemData: [...action.payload]
 			};
 		case LOG_IN:
 			return {
@@ -43,8 +87,8 @@ const reducer = (state = initialState, action) => {
 				...state,
 				userInfo: {
 					username: action.payload.username,
-					phone_number: state.userInfo.phone_number,
-					password: action.payload.password
+					password: action.payload.password,
+					email: state.userInfo.email,
 				}
 			};
 		case LOG_OUT:
@@ -53,8 +97,8 @@ const reducer = (state = initialState, action) => {
 				userId: '',
 				userInfo: {
 					username: '',
-					phone_number: '',
-					password: ''
+					password: '',
+					email: '',
 				},
 				isLoggedIn: false
 			};
@@ -63,4 +107,6 @@ const reducer = (state = initialState, action) => {
 	}
 };
 
+
+//Exports
 export default reducer;

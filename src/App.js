@@ -3,21 +3,16 @@ import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Dashboard from './Components/HomePage';
-import Login  from './Components/LoginPage';
-import Signup from './Components/RegisterPage';
-import Account from './Components/OwnerPage';
-
-// import { GlobalStyle } from './Styled/Global';
-// import { Container } from './Styled/Container';
-// import { Nav, NavHeader, NavItem, NavItems, NavItemButton } from './Styled/Navbar';
-// import UnderConstruction from './Components/UnderConstruction';
+import Account from './Components/Account';
+import Dashboard from './Components/Dashboard';
+import PrivateRoute from './Components/PrivateRoute';
+import Login  from './Components/UserLogin';
+import Signup from './Components/UserSignup';
 
 import { logOut } from './Actions/index';
-import PrivateRoute from './Components/PrivateRoute';
 
 
-//
+//ReactApp
 function App(props) {
 	const { isLoggedIn, dispatch } = props;
 
@@ -103,60 +98,10 @@ function App(props) {
 			</div>
 		</div>
 	);
-
-
-    // return (
-    //     <Container>
-    //         <GlobalStyle />
-    //         <Nav>
-    //             <NavHeader>Marketplace</NavHeader>
-    //             <NavItems>
-    //                 {/* Link to Home Page available always */}
-    //                 <NavItem to="/">Home</NavItem>
-
-    //                 {/* Link to User Profile Page available for logged in user */}
-    //                 {username && <NavItem to="/owner">Business Owner</NavItem>}
-
-    //                 {/* When user is logged in user "Logout" link display; otherwise "Login" link display */}
-    //                 {
-    //                     username
-    //                         ? <NavItemButton to="/" onClick={() => setLoggedUser('')}>Logout</NavItemButton>
-    //                         : <NavItemButton to="/login">Login</NavItemButton>
-    //                 }
-    //             </NavItems>
-    //         </Nav>
-
-    //         <div>
-    //             {redirectTo && <Redirect to={redirectTo} />}
-
-    //             <Switch>
-    //                 <Route exact path="/">
-    //                     <HomePage />
-    //                 </Route>
-
-    //                 <Route path="/owner">
-    //                     <OwnerPage username={username} />
-    //                 </Route>
-
-    //                 <Route path="/login" >
-    //                     <LoginPage setLoggedUser={setLoggedUser} />
-    //                 </Route>
-
-    //                 <Route path="/register" >
-    //                     <RegisterPage setLoggedUser={setLoggedUser} />
-    //                 </Route>
-
-    //                 <Route path="/logout">
-    //                     <Redirect to="/" />
-    //                 </Route>
-    //             </Switch>
-    //         </div>
-    //     </Container>
-    // );
 }
 
 
-//
+//Pass State
 const mapStateToProps = state => {
 	return {
 		...state,
