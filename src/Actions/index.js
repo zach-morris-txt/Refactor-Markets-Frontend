@@ -1,5 +1,5 @@
 //Imports
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { axiosWithAuth } from '../Utils/axiosWithAuth';
 
 
 //Actions

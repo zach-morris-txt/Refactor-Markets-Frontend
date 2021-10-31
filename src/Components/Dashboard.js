@@ -2,9 +2,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import NewItem from './newItemForm';
+import NewItem from './ItemForm';
 import Item from './Item';
-import { fetchItems } from '../actions/index';
+import { fetchItems } from '../Actions/index';
 
 
 //Dashboard

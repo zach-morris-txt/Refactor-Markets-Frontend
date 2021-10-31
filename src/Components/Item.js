@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { startEditing, cancelUpdate, updateItem, deleteItem } from '../actions/index';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { startEditing, cancelUpdate, updateItem, deleteItem } from '../Actions/index';
+import { axiosWithAuth } from '../Utils/axiosWithAuth';
 
 
 //Item

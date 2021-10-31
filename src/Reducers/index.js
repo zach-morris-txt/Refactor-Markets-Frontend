@@ -11,7 +11,7 @@ import {
 	UPDATE_ITEM,
 	CANCEL_UPDATE,
 	SET_USER_INFO
-} from '../actions';
+} from '../Actions';
 
 const initialState = {
 	itemData: [{}],

@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { addItem } from '../actions/index';
+import { axiosWithAuth } from '../Utils/axiosWithAuth';
+import { addItem } from '../Actions/index';
 
 
 //Form State
