@@ -85,8 +85,8 @@ function App(props) {
 							render={props => {
 								return (
 									<div className="header">
-										<h1>Water My Plants</h1>
-										<p>We remember to water your plants, so you don't have to.</p>
+										<h1>Starter Markets</h1>
+										<p>Goods And Services</p>
 										<Link to="/signup">
 											<button className="button">Get Started</button>
 										</Link>
