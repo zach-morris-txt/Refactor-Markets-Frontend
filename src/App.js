@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import './App.css'
 import Account from './Components/Account';
 import Dashboard from './Components/Dashboard';
 import PrivateRoute from './Components/PrivateRoute';
