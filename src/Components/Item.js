@@ -97,7 +97,7 @@ function Item(props) {
 					</form>
 				</>
 			) : (
-				<>
+				<div className="itemWrapper">
 					<ul>
 						<li>
 							<p>Name: {item.item_name}</p>
@@ -109,12 +109,11 @@ function Item(props) {
 							<p>Location: {item.item_location}</p>
 						</li>
 					</ul>
-					
-					
-					
-					<button id="editBtn" onClick={handleStartEditing}>Edit</button>
-					<button id="deleteBtn" onClick={handleDelete}>Delete</button>
-				</>
+					<div className="btnWrapper">
+						<button id="editBtn" onClick={handleStartEditing}>Edit</button>
+						<button id="deleteBtn" onClick={handleDelete}>Delete</button>
+					</div>
+				</div>
 			)}
 		</div>
 	);
