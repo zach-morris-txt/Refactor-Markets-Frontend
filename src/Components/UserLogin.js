@@ -9,8 +9,8 @@ import { logIn, setUserInfo } from '../Actions/index';
 
 //Form State
 const initialCredentials = {
-	username: '',
-	password: ''
+	username: 'm',
+	password: 'mmmmm'
 };
 
 

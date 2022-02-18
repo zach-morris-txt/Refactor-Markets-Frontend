@@ -87,8 +87,8 @@ function App(props) {
 									<div className="header">
 										<h1>Starter Markets</h1>
 										<p>Goods And Services</p>
-										<Link to="/signup">
-											<button className="button">Get Started</button>
+										<Link to="/login">
+											<button className="button"><div className="demo">DEMO</div>Get Started</button>
 										</Link>
 									</div>
 								);
