@@ -26,7 +26,11 @@ function App(props) {
 			<div className="wrapper">
 				<div className="container">
 					<div className="nav">
-						<div className="logo">WMP</div>
+						<Link to="/">
+									<li>
+										<div className="logo">WMP</div>
+									</li>
+						</Link>
 						<div className="menu">
 							<ul className="navMenu">
 								<Link to="/">

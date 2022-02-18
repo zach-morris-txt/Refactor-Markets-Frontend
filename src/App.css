@@ -142,7 +142,7 @@
 /* Sign up styles */
 
 .sbox {
-	width: 300px;
+	width: 20%;
 	padding: 40px;
 	position: absolute;
 	top: 50%;
@@ -166,7 +166,7 @@
 	text-align: center;
 	border: 2px solid #3498db;
 	padding: 14px 10px;
-	width: 200px;
+	width: 100%;
 	outline: none;
 	background: none;
 	border-radius: 24px;
@@ -174,7 +174,6 @@
 }
 
 .sbox input:focus {
-	width: 220px;
 	border-color: #00cc66;
 }
 
@@ -263,7 +262,7 @@
 /* login styles */
 
 .box {
-	width: 300px;
+	width: 20%;
 	padding: 40px;
 	position: absolute;
 	top: 50%;
@@ -293,7 +292,7 @@
 	text-align: center;
 	border: 2px solid #3498db;
 	padding: 14px 10px;
-	width: 200px;
+	width: 100%;
 	outline: none;
 	background: none;
 	border-radius: 24px;
@@ -301,7 +300,6 @@
 }
 
 .box input:focus {
-	width: 220px;
 	border-color: #00cc66;
 }
 
