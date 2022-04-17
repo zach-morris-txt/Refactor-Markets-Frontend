@@ -4,4 +4,4 @@ https://frontend-market.herokuapp.com/
 
 <h3>[Tech Stack]</h3>
 • Axios
-• Redux\
+• Redux
